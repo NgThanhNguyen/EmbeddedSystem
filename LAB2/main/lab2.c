@@ -20,18 +20,14 @@
 #define BLINK_GPIO 17
 #define BUTTON_GPIO 18
 const TickType_t xDelay1000ms = pdMS_TO_TICKS (1000) ;
-
 bool temp = false;
 
 void ATaskFunction(void *pvParameter)
 {
-  char* TaskName;
-
   for(;;)
   {
     printf("Name: Nguyen Thanh Nguyen\n");
     printf("Student ID: 1852618\n");
-    vPrintSring(TaskName);
     //vTaskDelay(1000 / portTICK_PERIOD_MS);
     vTaskDelay(xDelay1000ms);
     // ...
@@ -55,10 +51,8 @@ void ATaskblink(void *pvParameter)
 
 void ATaskbutton(void *pvParameter)
 {
-  char* TaskName;
   for(;;)
   {
-    vPrintString(TaskName);
     if(gpio_get_level(BUTTON_GPIO) == 0 && temp == true) {
       if(gpio_get_level(BUTTON_GPIO) == 0){
         gpio_set_level(BLINK_GPIO, 1);
